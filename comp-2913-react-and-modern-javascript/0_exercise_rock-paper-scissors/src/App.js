@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+// Components
+import ActionList from './components/ActionList';
+import ScoreBoard from './components/ScoreBoard';
+import ResetButton from './components/ResetButton';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <ScoreBoard scores={
+          {
+            human: 2,
+            computer: 8,
+          }
+        }/>
+
+        <ActionList />
+
+        <div>
+          <ResetButton />
+        </div>
       </div>
     );
   }
