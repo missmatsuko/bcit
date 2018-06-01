@@ -3,7 +3,7 @@
 ## Assignment
 Create a new React application, name it “stop-watch”.
 
-- [ ] Create a component called “StopWatch” and render it inside of your top level “App” component.
+- [x] Create a component called “StopWatch” and render it inside of your top level “App” component.
 
 - [ ] Your Stop Watch should render a timer that starts automatically when the View loads. The timer should be in the format “mm:ss”. Eg. 01:15 (1 minute and 15 seconds). Do not worry about times over 1 hour.
 

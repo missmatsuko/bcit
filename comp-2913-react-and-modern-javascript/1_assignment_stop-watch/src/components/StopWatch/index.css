@@ -1,0 +1,27 @@
+.StopWatch {
+  background-color: black;
+  color: white;
+  padding: 4em 20px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.StopWatch::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4em;
+  background: linear-gradient(to bottom, rgba(138,138,138,1) 0%, rgba(51,51,51,1) 65%, rgba(21,21,21,1) 97%, rgba(0,0,0,1) 100%);
+  border-top: 2px solid #bababa;
+}
+
+.StopWatch__inner {
+  position: relative;
+}
+
+.StopWatch__controls {
+  margin: 1em 0;
+}
