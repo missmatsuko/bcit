@@ -1,4 +1,4 @@
-# Rock Paper Scissors
+# Stop Watch
 
 ## Assignment
 Create a new React application, name it “stop-watch”.
