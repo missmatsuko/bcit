@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import './index.css';
 
 class Button extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const color = this.props.color || 'gray';
+    const { color, text, onClick } = this.props;
 
     return (
-      <button className={ `Button Button--${this.props.color}` }>
-        { this.props.text }
+      <button className={ `Button Button--${ color }` } onClick={ onClick }>
+        { text }
       </button>
     );
   }
 }
+
+Button.defaultProps = {
+  color: 'gray',
+  text: 'Click Me',
+};
 
 export default Button;
