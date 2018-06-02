@@ -10,7 +10,7 @@ Create a new React application, name it “stop-watch”.
 
 - [x] The timer should update the view every second.
 
-- [ ] Display a button labeled “Pause”. This button pauses the timer.
+- [x] Display a button labeled “Pause”. This button pauses the timer.
 
 - [ ] When paused, button should display “Start”. Clicking on it restarts the timer.
 

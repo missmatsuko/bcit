@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-import Clock from '../Clock';
+import Timer from '../Timer';
 import Button from '../Button';
 
 class StopWatch extends Component {
@@ -8,65 +8,54 @@ class StopWatch extends Component {
     super(props);
 
     this.state = {
-      start: Date.now(),
-      duration: 0,
-      paused: false,
+      lastDuration: 0,
+      startDate: Date.now(),
     }
 
-    this.startClock = this.startClock.bind(this);
-    this.stopClock = this.stopClock.bind(this);
-    this.togglePaused = this.togglePaused.bind(this);
+    this.pause = this.pause.bind(this);
+    this.reset = this.reset.bind(this);
+    this.start = this.start.bind(this);
   }
 
-  startClock() {
-    this.interval = setInterval(() => {
-      const now = Date.now();
-      const diff = now - this.state.start;
+  pause() {
+    this.setState((prevState) => ({
+      lastDuration: prevState.lastDuration + Date.now() - prevState.startDate,
+      startDate: null,
+    }));
+  }
 
-      this.setState({
-        duration: diff,
-      });
-    }, 1000);
-
+  reset() {
     this.setState({
-      paused: false,
+      lastDuration: 0,
+      startDate: null,
     });
   }
 
-  stopClock() {
-    clearInterval(this.interval);
-
-    this.setState(prevState => ({
-      duration: 0,
-      paused: true,
-    }));
-  }
-
-  togglePaused() {
-    this.setState(prevState => ({
-      paused: !prevState.paused,
-    }));
-  }
-
-  componentDidMount() {
-    this.startClock();
+  start() {
+    this.setState({
+      startDate: Date.now(),
+    });
   }
 
   render() {
+    const { lastDuration, startDate } = this.state;
+
     return (
       <div className="StopWatch">
         <div className="StopWatch__inner">
-          <Clock duration={ this.state.duration } />
-
+          <Timer
+            lastDuration={ lastDuration }
+            startDate={ startDate }
+          />
           <div className="StopWatch__controls">
             <Button
-              text={ this.state.paused ? 'Resume' : 'Pause' }
-              color={ this.state.paused ? 'green' : 'red' }
-              onClick={ this.togglePaused }
+              text={ startDate ? 'Pause' : lastDuration ? 'Resume' : 'Start' }
+              color={ startDate ? 'red' : 'green' }
+              onClick={ startDate ? this.pause : this.start }
             />
             <Button
               text="Reset"
-              onClick={ this.stopClock }
+              onClick={ this.reset }
             />
           </div>
         </div>
