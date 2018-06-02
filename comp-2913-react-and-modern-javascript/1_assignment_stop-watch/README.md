@@ -1,4 +1,5 @@
 # Stop Watch
+Stop watch built in React. Styled after an older iOS version's stop watch.
 
 ## Assignment
 Create a new React application, name it “stop-watch”.
