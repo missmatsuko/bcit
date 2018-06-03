@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
+
+// Import custom components
 import Timer from '../Timer';
 import Button from '../Button';
 
@@ -12,11 +14,13 @@ class StopWatch extends Component {
       startDate: Date.now(),
     }
 
+    // Bind custom methods
     this.pause = this.pause.bind(this);
     this.reset = this.reset.bind(this);
     this.start = this.start.bind(this);
   }
 
+  // Custom methods
   pause() {
     this.setState((prevState) => ({
       lastDuration: prevState.lastDuration + Date.now() - prevState.startDate,
