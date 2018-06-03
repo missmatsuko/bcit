@@ -9,10 +9,8 @@ class Game extends Component {
     super(props);
 
     this.state = {
-      scores: {
-        computer: 0,
-        human: 0,
-      }
+      computerScore: 5,
+      humanScore: 3,
     }
 
     // Bind custom methods
@@ -40,6 +38,10 @@ class Game extends Component {
 
   reset() {
     // Reset both scores to 0
+    this.setState({
+      computerScore: 0,
+      humanScore: 0,
+    });
   }
 
   render() {
@@ -47,11 +49,11 @@ class Game extends Component {
       <div className="App">
         <Score
           name="human"
-          value={ 0 }
+          value={ this.state.humanScore }
         />
         <Score
           name="computer"
-          value={ 0 }
+          value={ this.state.computerScore }
         />
 
         <Button
