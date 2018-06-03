@@ -2,26 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 
 // Components
-import ActionList from './components/ActionList';
-import ScoreBoard from './components/ScoreBoard';
-import ResetButton from './components/ResetButton';
+import Game from './components/Game';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ScoreBoard scores={
-          {
-            human: 2,
-            computer: 8,
-          }
-        }/>
-
-        <ActionList />
-
-        <div>
-          <ResetButton />
-        </div>
+        <Game />
       </div>
     );
   }
