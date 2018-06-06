@@ -40,7 +40,7 @@ class Game extends Component {
       return;
     }
 
-    if (humanAction > computerAction || (humanAction === 0 && computerAction === ACTIONS.length - 1)) {
+    if (humanAction === computerAction + 1 || (humanAction === 0 && computerAction === ACTIONS.length - 1)) {
       this.setState((prevState) => ({
         humanScore: prevState.humanScore + 1,
       }));
