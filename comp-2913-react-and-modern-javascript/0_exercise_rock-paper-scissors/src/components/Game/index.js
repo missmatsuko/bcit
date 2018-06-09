@@ -7,6 +7,7 @@ import Score from '../Score';
 import Button from '../Button';
 
 const ACTIONS = ['rock', 'paper', 'scissors']; // Rock < Paper < Scissors < Rock ...
+const NUM_ACTIONS = ACTIONS.length;
 const WINNING_SCORE = 5;
 
 class Game extends Component {
@@ -38,15 +39,20 @@ class Game extends Component {
     const computerAction = Math.floor(Math.random() * ACTIONS.length);
 
     // Figure out winner, adjust points
-    if (humanAction === computerAction) {
+    // Resource: https://stackoverflow.com/a/9553712/6387394
+    let diff = (NUM_ACTIONS + humanAction - computerAction) % NUM_ACTIONS;
+
+    // Tie, nobody wins
+    if (diff === 0) {
       return;
     }
 
-    if (humanAction === computerAction + 1 || (humanAction === 0 && computerAction === ACTIONS.length - 1)) {
+    if (diff % 2 === 1 ) {
       this.setState((prevState) => ({
         humanScore: prevState.humanScore + 1,
       }));
-    } else {
+    }
+    else if (diff % 2 === 0) {
       this.setState((prevState) => ({
         computerScore: prevState.computerScore + 1,
       }));
