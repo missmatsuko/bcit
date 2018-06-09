@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './index.css';
 
+import Icon from '../Icon';
+
 class Action extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class Action extends Component {
     return (
       <button className="Action color-human" onClick={ this.onClick }>
         <span className="Action__icon">
-          ⓘ
+          <Icon name={ text } />
         </span>
         <span className="Action__text">{ text }</span>
       </button>
