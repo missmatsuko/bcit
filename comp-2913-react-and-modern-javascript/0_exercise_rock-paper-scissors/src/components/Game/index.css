@@ -1,0 +1,24 @@
+.Game {
+  padding: 1em 2em;
+  text-transform: uppercase;
+}
+
+.Game__scores {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Game__field {
+  height: 90vw;
+}
+
+.Game__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.Game__footer {
+  margin-top: 1.5em;
+}

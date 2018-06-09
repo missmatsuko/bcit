@@ -1,0 +1,12 @@
+.Score {
+
+}
+
+.Score__name {
+  font-size: 0.8em;
+}
+
+.Score__value {
+  font-size: 1.8em;
+  line-height: 0;
+}

@@ -1,0 +1,24 @@
+.Action {
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0.5;
+  transition: 0.3s;
+  padding: 0.5em 1em;
+}
+
+.Action__icon {
+  border: 3px solid currentColor;
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.Action:hover {
+  opacity: 1;
+}

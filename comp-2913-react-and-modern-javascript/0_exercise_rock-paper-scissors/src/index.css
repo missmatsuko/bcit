@@ -4,3 +4,11 @@ body {
   font-family: sans-serif;
   text-align: center;
 }
+
+.color-human {
+  color: #0099F7;
+}
+
+.color-computer {
+  color: #ED5755;
+}

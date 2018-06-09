@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import './index.css';
 
 // Components
-import Score from './Score';
-import Button from './Button';
+import Action from '../Action';
+import Score from '../Score';
+import Button from '../Button';
 
 const ACTIONS = ['rock', 'paper', 'scissors']; // Rock < Paper < Scissors < Rock ...
 const WINNING_SCORE = 5;
@@ -69,31 +71,38 @@ class Game extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Score
-          name="human"
-          value={ this.state.humanScore }
-        />
-        <Score
-          name="computer"
-          value={ this.state.computerScore }
-        />
-
-        { ACTIONS.map((actionName) => (
-          <Button
-            key={ actionName }
-            onClick={ this.play }
-            text={ actionName }
+      <section className="Game">
+        <div className="Game__scores">
+          <Score
+            name="human"
+            value={ this.state.humanScore }
           />
-        )) }
-
-        <div>
-          <Button
-            text="Reset"
-            onClick={ this.reset }
+          <Score
+            name="computer"
+            value={ this.state.computerScore }
           />
         </div>
-      </div>
+
+        <div className="Game__field">
+        </div>
+
+        <div className="Game__actions">
+          { ACTIONS.map((actionName) => (
+            <Action
+              key={ actionName }
+              onClick={ this.play }
+              text={ actionName }
+            />
+          )) }
+        </div>
+
+        <footer className="Game__footer">
+          <Button
+            text="Reset Game"
+            onClick={ this.reset }
+          />
+        </footer>
+      </section>
     );
   }
 }
