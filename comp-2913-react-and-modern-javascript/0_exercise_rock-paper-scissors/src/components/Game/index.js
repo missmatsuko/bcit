@@ -17,6 +17,8 @@ class Game extends Component {
     this.state = {
       computerScore: 0,
       humanScore: 0,
+      ended: false,
+      message: '',
     }
 
     // Bind custom methods
@@ -27,11 +29,38 @@ class Game extends Component {
 
   // Custom methods
   end() {
+    if(this.state.ended) {
+      return;
+    }
+
+    let winnerMessage = 'Winner is: ';
+    let computerScore = this.state.computerScore;
+    let humanScore = this.state.humanScore;
+
+    if(computerScore === humanScore) {
+      winnerMessage = "It's a tie";
+    }
+    else if (humanScore > computerScore) {
+      winnerMessage += 'human';
+    }
+    else {
+      winnerMessage += 'computer'
+    }
+
     // Display message about who won (when one player reaches 5 pts)
-    console.log("end game");
+    this.setState({
+      message: `Game over! ${ winnerMessage }!`,
+      ended: true,
+    });
   }
 
   play(event, buttonProps) {
+    if(this.state.ended) {
+      return;
+    }
+
+    let winnerMessage = 'Winner is: ';
+
     // Get action key for player
     const humanAction = ACTIONS.indexOf(buttonProps.text);
 
@@ -44,19 +73,39 @@ class Game extends Component {
 
     // Tie, nobody wins
     if (diff === 0) {
-      return;
+      winnerMessage = "It's a tie";
     }
-
-    if (diff % 2 === 1 ) {
+    // Odd, human wins
+    else if (diff % 2 === 1 ) {
+      winnerMessage += 'human';
       this.setState((prevState) => ({
         humanScore: prevState.humanScore + 1,
       }));
     }
+    // Even, computer wins
     else if (diff % 2 === 0) {
+      winnerMessage += 'computer';
       this.setState((prevState) => ({
         computerScore: prevState.computerScore + 1,
       }));
     }
+
+    // Show message
+    this.setState({
+      message: `Human plays ${ ACTIONS[humanAction] }.
+      Computer plays ${ ACTIONS[computerAction] }.
+      ${ winnerMessage }!`,
+    });
+  }
+
+  reset() {
+    // Reset both scores to 0
+    this.setState({
+      computerScore: 0,
+      humanScore: 0,
+      ended: false,
+      message: '',
+    });
   }
 
   // Lifecycle methods
@@ -65,14 +114,6 @@ class Game extends Component {
     if (this.state.humanScore >= WINNING_SCORE || this.state.computerScore >= WINNING_SCORE) {
       this.end();
     }
-  }
-
-  reset() {
-    // Reset both scores to 0
-    this.setState({
-      computerScore: 0,
-      humanScore: 0,
-    });
   }
 
   render() {
@@ -90,6 +131,7 @@ class Game extends Component {
         </div>
 
         <div className="Game__field">
+          { this.state.message }
         </div>
 
         <div className="Game__actions">
