@@ -17,10 +17,10 @@ class Action extends Component {
   }
 
   render() {
-    const { text } = this.props;
+    const { disabled, text } = this.props;
 
     return (
-      <button className="Action color-human" onClick={ this.onClick }>
+      <button className="Action color-human" onClick={ this.onClick } disabled={ disabled }>
         <span className="Action__icon">
           <Icon name={ text } />
         </span>
@@ -31,6 +31,7 @@ class Action extends Component {
 }
 
 Action.defaultProps = {
+  disabled: false,
   text: 'Click Here',
 };
 

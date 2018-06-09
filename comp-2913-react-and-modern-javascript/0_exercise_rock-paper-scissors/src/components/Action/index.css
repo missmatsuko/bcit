@@ -19,6 +19,11 @@
   margin-bottom: 0.5em;
 }
 
-.Action:hover {
+.Action:not(:disabled):hover,
+.Action:not(:disabled):focus {
   opacity: 1;
+}
+
+.Action:disabled {
+  color: gray;
 }

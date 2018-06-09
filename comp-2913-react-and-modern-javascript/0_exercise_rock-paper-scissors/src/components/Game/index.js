@@ -140,6 +140,7 @@ class Game extends Component {
               key={ actionName }
               onClick={ this.play }
               text={ actionName }
+              disabled={ this.state.ended }
             />
           )) }
         </div>
