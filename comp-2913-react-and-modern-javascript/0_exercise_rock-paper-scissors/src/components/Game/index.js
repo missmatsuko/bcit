@@ -17,6 +17,8 @@ class Game extends Component {
     this.state = {
       computerScore: 0,
       humanScore: 0,
+      computerAction: '',
+      humanAction: '',
       ended: false,
       message: '',
     }
@@ -54,7 +56,7 @@ class Game extends Component {
     });
   }
 
-  play(event, buttonProps) {
+  play(event, actionProps) {
     if(this.state.ended) {
       return;
     }
@@ -62,10 +64,16 @@ class Game extends Component {
     let winnerMessage = 'Winner is: ';
 
     // Get action key for player
-    const humanAction = ACTIONS.indexOf(buttonProps.text);
+    const humanAction = ACTIONS.indexOf(actionProps.name);
 
     // Make random action key for computer
     const computerAction = Math.floor(Math.random() * ACTIONS.length);
+
+    // Update field actions
+    this.setState({
+      humanAction: actionProps.name,
+      computerAction: ACTIONS[computerAction],
+    });
 
     // Figure out winner, adjust points
     // Resource: https://stackoverflow.com/a/9553712/6387394
@@ -131,26 +139,41 @@ class Game extends Component {
         </div>
 
         <div className="Game__field">
-          { this.state.message }
-        </div>
-
-        <div className="Game__actions">
-          { ACTIONS.map((actionName) => (
+          <div>
             <Action
-              key={ actionName }
-              onClick={ this.play }
-              text={ actionName }
-              disabled={ this.state.ended }
+              className="color-human"
+              name={ this.state.humanAction }
             />
-          )) }
+            <Action
+              className="color-computer"
+              name={ this.state.computerAction }
+            />
+          </div>
+          <div>
+            { this.state.message }
+          </div>
         </div>
 
-        <footer className="Game__footer">
-          <Button
-            text="Reset Game"
-            onClick={ this.reset }
-          />
-        </footer>
+        <div>
+          <div className="Game__actions">
+            { ACTIONS.map((actionName) => (
+              <Action
+                className="color-human"
+                disabled={ this.state.ended }
+                key={ actionName }
+                name={ actionName }
+                onClick={ this.play }
+              />
+            )) }
+          </div>
+
+          <footer className="Game__footer">
+            <Button
+              text="Reset Game"
+              onClick={ this.reset }
+            />
+          </footer>
+        </div>
       </section>
     );
   }

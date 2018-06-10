@@ -17,22 +17,23 @@ class Action extends Component {
   }
 
   render() {
-    const { disabled, text } = this.props;
+    const { disabled, name } = this.props;
 
     return (
-      <button className="Action color-human" onClick={ this.onClick } disabled={ disabled }>
+      <button className={`Action ${ this.props.className }`} onClick={ this.onClick } disabled={ disabled }>
         <span className="Action__icon">
-          <Icon name={ text } />
+          <Icon name={ name } />
         </span>
-        <span className="Action__text">{ text }</span>
+        <span className="Action__text">{ name }</span>
       </button>
+
     );
   }
 }
 
 Action.defaultProps = {
   disabled: false,
-  text: 'Click Here',
+  name: 'Click Here',
 };
 
 export default Action;

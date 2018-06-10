@@ -3,7 +3,6 @@
   border: none;
   text-transform: uppercase;
   font-weight: bold;
-  opacity: 0.5;
   transition: 0.3s;
   padding: 0.5em 1em;
 }
@@ -19,11 +18,15 @@
   margin-bottom: 0.5em;
 }
 
-.Action:not(:disabled):hover,
-.Action:not(:disabled):focus {
+button.Action {
+  opacity: 0.5;
+}
+
+button.Action:not(:disabled):hover,
+button.Action:not(:disabled):focus{
   opacity: 1;
 }
 
-.Action:disabled {
+button.Action:disabled {
   color: gray;
 }
