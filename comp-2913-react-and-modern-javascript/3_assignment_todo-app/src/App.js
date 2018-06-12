@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+// Components
+import CheckList from './components/CheckList';
+
+const tasks = ['Check this item to remove it from your todo list', 'Item 2', 'Item 3'];
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1 class="AppTitle">Todo List</h1>
+        <CheckList items={ tasks } />
+
+        <form className="AppForm">
+          <input type="text" className="AppFormInput" />
+          <input type="submit" value="Add" className="AppFormSubmit" />
+        </form>
       </div>
     );
   }
