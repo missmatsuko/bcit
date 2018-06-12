@@ -17,6 +17,6 @@ _(Made it show "Resume" and resume timer)_
 
 - [x] Display a button labeled “Reset”. This button resets the timer to 0 and stops the timer.
 
-- [ ] When the timer is 0, the “Stop” button should be re-labeled as “Start”. _Didn't these the same button._
+- [ ] When the timer is 0, the “Stop” button should be re-labeled as “Start”. _Didn't use the same button._
 
 - [x] Make sure to test it, to avoid bugs. What happens if the Start button is clicked multiple times? How about if the Stop button is clicked multiple times?
