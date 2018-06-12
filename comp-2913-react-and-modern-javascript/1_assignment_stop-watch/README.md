@@ -2,7 +2,7 @@
 Stop watch built in React. Styled after an older iOS version's stop watch.
 
 ## Assignment
-Create a new React application, name it “stop-watch”.
+- [x] Create a new React application, name it “stop-watch”.
 
 - [x] Create a component called “StopWatch” and render it inside of your top level “App” component.
 
