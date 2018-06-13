@@ -34,19 +34,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <ul>
-          {
-            this.state.results.map((country) =>
-              <li key={ country.alpha3Code }>
-                { country.name }
-                <ul>
-                  <li>{ country.capital }</li>
-                  <li>{ country.region }</li>
-                </ul>
-              </li>
-            )
-          }
-        </ul>
+        <h1 class="AppTitle">Countries List</h1>
+        {
+          this.state.results.length
+          ?
+          <ul class="AppList">
+            {
+              this.state.results.map((country) =>
+                <li key={ country.alpha3Code }>
+                  { country.name }
+                  <ul>
+                    <li>{ country.capital }</li>
+                    <li>{ country.region }</li>
+                  </ul>
+                </li>
+              )
+            }
+          </ul>
+          :
+          <div className="AppSpinner">
+            <span class="screen-reader-text">Loading...</span>
+          </div>
+        }
       </div>
     );
   }
