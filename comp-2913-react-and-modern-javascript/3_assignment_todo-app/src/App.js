@@ -10,16 +10,41 @@ class App extends Component {
 
     this.state = {
       newTask: '',
-      tasks: ['Check this item to remove it from your todo list', 'Item 2', 'Item 3'],
+      tasks: [
+        {
+          key: Math.random().toString(),
+          value: 'Check this item to remove it from your todo list'
+        },
+        {
+          key: Math.random().toString(),
+          value: 'Buy groceries'
+        },
+        {
+          key: Math.random().toString(),
+          value: 'Do laundry'
+        },
+      ],
     };
 
     // Bind custom methods
-    this.handleChange = this.handleChange.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
+    this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // Custom methods
-  handleChange = function(event) {
+  handleCheck= function(event, index) {
+    const checked = event.target.checked;
+    if (checked) {
+      const tasks = [...this.state.tasks];
+      tasks.splice(index, 1);
+      this.setState({
+        tasks: tasks,
+      });
+    }
+  }
+
+  handleInput = function(event) {
     const name = event.target.name;
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     this.setState({ [name]: value });
@@ -29,7 +54,7 @@ class App extends Component {
     if(this.state.newTask.trim()) {
       this.setState((prevState) => ({
         newTask: '',
-        tasks: [...prevState.tasks, this.state.newTask],
+        tasks: [...prevState.tasks, {key: Math.random().toString(), value: this.state.newTask}],
       }));
     }
     event.preventDefault();
@@ -41,15 +66,29 @@ class App extends Component {
         <h1 className="AppTitle">Todo List</h1>
         <ul className="AppList">
           {
-            this.state.tasks.map((item, index) =>
-              <Task value={ item } key={ item } />
+            this.state.tasks.map(({key, value}, index) =>
+              <Task
+                value={ value }
+                key={ key }
+                onChange={(event) => this.handleCheck(event, index)}
+              />
             )
           }
         </ul>
 
         <form className="AppForm" onSubmit={ this.handleSubmit }>
-          <input type="text" className="AppFormInput" name="newTask" value={ this.state.value } onChange={ this.handleChange } />
-          <input type="submit" value="Add" className="AppFormSubmit" />
+          <input
+            type="text"
+            className="AppFormInput"
+            name="newTask"
+            value={ this.state.newTask }
+            onChange={ this.handleInput }
+          />
+          <input
+            type="submit"
+            value="Add"
+            className="AppFormSubmit"
+          />
         </form>
       </div>
     );

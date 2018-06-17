@@ -14,6 +14,6 @@ Todo checklist app.
 
 - [x] Each list item must display a checkbox, and the task that the user wrote.
 
-- [ ] When checking off the checkbox, the list item should be removed from the list.
+- [x] When checking off the checkbox, the list item should be removed from the list.
 
-- [ ] Ensure that you make use of Components intelligently. Think about what should be extracted into a separate component, and do so.
+- [x] Ensure that you make use of Components intelligently. Think about what should be extracted into a separate component, and do so.

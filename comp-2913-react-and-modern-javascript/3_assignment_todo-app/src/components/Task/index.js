@@ -3,12 +3,17 @@ import './index.css';
 
 class Task extends Component {
   render() {
-    const { value } = this.props;
+    const { value, onChange } = this.props;
 
     return (
-      <li key={ value } className="Task">
+      <li className="Task">
         <label className="TaskLabel">
-          <input type="checkbox" className="TaskInput" value={ value } />
+          <input
+            type="checkbox"
+            className="TaskInput"
+            value={ value }
+            onChange={ onChange }
+          />
           <span className="TaskText">{ value }</span>
         </label>
       </li>
