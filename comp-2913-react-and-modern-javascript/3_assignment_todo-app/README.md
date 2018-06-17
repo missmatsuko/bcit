@@ -8,7 +8,7 @@ Todo checklist app.
 
 - [x] A button should be displayed beside the input. When clicked, this button should add the user’s input to a list of to do items.
 
-- [ ] Blank items should not be added to the list. This can happen if the user presses the “Add” button without writing down a task.
+- [x] Blank items should not be added to the list. This can happen if the user presses the “Add” button without writing down a task.
 
 - [ ] The list could potentially have 0 to multiple items.
 

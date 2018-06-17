@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   handleSubmit = function(event) {
-    if(this.state.value) {
+    if(this.state.value.trim()) {
       this.setState((prevState) => ({
         tasks: [...prevState.tasks, this.state.value],
         value: '',
