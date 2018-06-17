@@ -14,8 +14,10 @@ class Task extends Component {
             value={ value }
             onChange={ onChange }
           />
-          <span className="TaskText">{ value }</span>
+          <span className="TaskCheckbox" />
+          <span className="screen-reader-text">Delete item: { value }</span>
         </label>
+          <span className="TaskText" aria-hidden={ true }>{ value }</span>
       </li>
     );
   }

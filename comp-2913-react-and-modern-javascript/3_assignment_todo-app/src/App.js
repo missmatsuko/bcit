@@ -13,7 +13,7 @@ class App extends Component {
       tasks: [
         {
           key: Math.random().toString(),
-          value: 'Check this item to remove it from your todo list'
+          value: 'Check an item to remove it from your todo list'
         },
         {
           key: Math.random().toString(),
@@ -60,6 +60,7 @@ class App extends Component {
     event.preventDefault();
   }
 
+  // Lifecycle methods
   render() {
     return (
       <div className="App">
