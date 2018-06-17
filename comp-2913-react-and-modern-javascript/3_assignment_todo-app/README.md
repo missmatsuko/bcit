@@ -10,7 +10,7 @@ Todo checklist app.
 
 - [x] Blank items should not be added to the list. This can happen if the user presses the “Add” button without writing down a task.
 
-- [ ] The list could potentially have 0 to multiple items.
+- [x] The list could potentially have 0 to multiple items.
 
 - [x] Each list item must display a checkbox, and the task that the user wrote.
 

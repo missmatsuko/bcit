@@ -9,8 +9,8 @@ class App extends Component {
     super(props);
 
     this.state = {
+      newTask: '',
       tasks: ['Check this item to remove it from your todo list', 'Item 2', 'Item 3'],
-      value: '',
     };
 
     // Bind custom methods
@@ -20,16 +20,16 @@ class App extends Component {
 
   // Custom methods
   handleChange = function(event) {
-    this.setState({
-      value: event.target.value,
-    });
+    const name = event.target.name;
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    this.setState({ [name]: value });
   }
 
   handleSubmit = function(event) {
-    if(this.state.value.trim()) {
+    if(this.state.newTask.trim()) {
       this.setState((prevState) => ({
-        tasks: [...prevState.tasks, this.state.value],
-        value: '',
+        newTask: '',
+        tasks: [...prevState.tasks, this.state.newTask],
       }));
     }
     event.preventDefault();
@@ -48,7 +48,7 @@ class App extends Component {
         </ul>
 
         <form className="AppForm" onSubmit={ this.handleSubmit }>
-          <input type="text" className="AppFormInput" value={ this.state.value } onChange={ this.handleChange } />
+          <input type="text" className="AppFormInput" name="newTask" value={ this.state.value } onChange={ this.handleChange } />
           <input type="submit" value="Add" className="AppFormSubmit" />
         </form>
       </div>
