@@ -10,10 +10,10 @@ class ForecastTable extends Component {
         <table className="ForecastTable">
           <thead>
             <tr>
-              <th>Date</th>
+              <th className="ForecastTableNarrowCol">Date</th>
               <th>Weather</th>
-              <th>High</th>
-              <th>Low</th>
+              <th className="ForecastTableNarrowCol">High</th>
+              <th className="ForecastTableNarrowCol">Low</th>
             </tr>
           </thead>
           <tbody>
@@ -21,9 +21,11 @@ class ForecastTable extends Component {
               data.map((item, index) =>
                 <tr key={item.key}>
                   <td>{item.day} {item.date}</td>
-                  <td>
-                    <img src={`http://l.yimg.com/a/i/us/we/52/${item.code}.gif`} alt='' />
-                    <span>{item.text}</span>
+                  <td className="ForecastTableWideCol">
+                    <div className="ForecastTableWeather">
+                      <img src={`http://l.yimg.com/a/i/us/we/52/${item.code}.gif`} alt='' />
+                      <span>{item.text}</span>
+                    </div>
                   </td>
                   <td>{`${item.high}°${units.toUpperCase()}`}</td>
                   <td>{`${item.low}°${units.toUpperCase()}`}</td>

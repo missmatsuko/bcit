@@ -3,6 +3,7 @@
   width: 100%;
   border-radius: 5px;
   overflow: hidden;
+  table-layout: fixed;
 }
 
 .ForecastTable tr {
@@ -31,4 +32,17 @@
 
 .ForecastTable td:nth-child(even) {
   background-color: #fafafa;
+}
+
+.ForecastTableNarrowCol {
+  width: 5rem;
+}
+
+.ForecastTableWeather {
+  display: flex;
+  align-items: center;
+}
+
+.ForecastTableWeather img {
+  padding-right: 1rem;
 }
