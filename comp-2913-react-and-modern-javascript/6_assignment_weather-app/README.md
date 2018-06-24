@@ -8,7 +8,7 @@
 - [x] If you make the API request below, you will get data for the weather forecast for Vancouver, for the next few days. Display the forecast, with weather information, temperature, etc.
 - [x] Users of your application should be able to use the dropdown to select different cities, and see weather for them.
 - [ ] Make good use of Component composition. Break parts of your application into sub-components, as you see fit.
-- [ ] Display images for each weather type. A rainy day should display a rainy icon.
+- [x] Display images for each weather type. A rainy day should display a rainy icon.
 - [x] The http request above returns data in American measurements. Since we’re in Canada, ensure that the data displayed uses the metric system/Celsius. There are a number of ways to do this. It’s up to you to figure out.
 - [x] To facilitate your lives, I’ll give you the specific endpoint that you need to make requests to.
 ```

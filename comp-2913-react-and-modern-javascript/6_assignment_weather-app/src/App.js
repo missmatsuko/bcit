@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 
 // Components
+import ForecastTable from './components/ForecastTable';
 
 const ENDPOINT = 'https://query.yahooapis.com/v1/public/yql';
-const WEATHER_IMAGE = 'https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/28d.png';
 
 class App extends Component {
   constructor(props) {
@@ -59,44 +59,7 @@ class App extends Component {
         <h1>Weather App</h1>
 
         <h2>3-day Forecast for {location}</h2>
-        {
-          forecast.map((item, index) =>
-            <div key={item.key}>
-              {item.code}
-              {item.date}
-              {item.day}
-              {item.high}
-              {item.low}
-              {item.day}
-              {item.text}
-            </div>
-          )
-        }
-        <table>
-          <thead>
-            <tr>
-              <th>Monday</th>
-              <th>Tuesday</th>
-              <th>Wednesday</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                [image]
-                [temp]
-              </td>
-              <td>
-                [image]
-                [temp]
-              </td>
-              <td>
-                [image]
-                [temp]
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <ForecastTable data={forecast} />
 
         <h2>Location</h2>
         <select onChange={this.handleLocationChange}>
