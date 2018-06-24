@@ -3,6 +3,7 @@ import './App.css';
 
 // Components
 import ForecastTable from './components/ForecastTable';
+import SelectInput from './components/SelectInput';
 
 const ENDPOINT = 'https://query.yahooapis.com/v1/public/yql';
 const LOCATIONS = [
@@ -70,20 +71,23 @@ class App extends Component {
   handleLocationChange = function(event) {
     const newLocation = event.target;
 
-    // Update location in state
     this.setState({
       location: {
         name: newLocation[newLocation.selectedIndex].text,
         value: newLocation.value,
       },
     });
-
-    this.getForecast();
   }
 
   // Lifecycle methods
   componentDidMount() {
     this.getForecast();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.location !== this.state.location) {
+      this.getForecast();
+    }
   }
 
   render() {
@@ -100,8 +104,9 @@ class App extends Component {
           units={units}
         />
 
-        <h2>Location</h2>
+        <h2>Customize Forecast</h2>
         <SelectInput
+          label="Location"
           onChange={this.handleLocationChange}
           values={LOCATIONS}
         />
