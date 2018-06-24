@@ -1,0 +1,45 @@
+.ForecastTable {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  table-layout: fixed;
+  background-color: white;
+}
+
+.ForecastTable tr:hover,
+.ForecastTable tr:hover td {
+  background-color: #e7e3f4;
+}
+
+.ForecastTable th,
+.ForecastTable td {
+  text-align: left;
+}
+
+.ForecastTable th {
+  padding: 1rem;
+  background-color: #1d1da3;
+  color: white;
+}
+
+.ForecastTable td {
+  padding: 0.5rem 1rem;
+}
+
+.ForecastTable td:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.ForecastTableNarrowCol {
+  width: 5rem;
+}
+
+.ForecastTableWeather {
+  display: flex;
+  align-items: center;
+}
+
+.ForecastTableWeather img {
+  padding-right: 1rem;
+}

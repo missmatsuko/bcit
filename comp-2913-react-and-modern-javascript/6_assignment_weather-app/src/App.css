@@ -1,0 +1,12 @@
+.App {
+  padding: 1rem 2rem 5rem;
+}
+
+.AppTitle {
+  text-align: center;
+}
+
+.AppOptions {
+  display: flex;
+  justify-content: space-between;
+}
