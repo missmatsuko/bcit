@@ -3,7 +3,7 @@ import './index.css';
 
 class ForecastTable extends Component {
   render() {
-    const {data, daytime} = this.props;
+    const {data} = this.props;
 
     if(data.length) {
       return(
@@ -23,7 +23,7 @@ class ForecastTable extends Component {
               data.map((item, index) =>
                 <tr key={item.key}>
                   <td>
-                    <img src={`https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${item.code}${daytime ? 'd' : 'n'}.png`} alt='' />
+                    <img src={`http://l.yimg.com/a/i/us/we/52/${item.code}.gif`} alt='' />
                   </td>
                   <td>{item.date}</td>
                   <td>{item.day}</td>
@@ -46,7 +46,6 @@ class ForecastTable extends Component {
 
 ForecastTable.defaultProps = {
   data: [],
-  daytime: true, // Can be used to change weather image to nighttime view (displays moon), but is just a hard-coded value for now.
 };
 
 export default ForecastTable;
