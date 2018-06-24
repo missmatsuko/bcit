@@ -5,6 +5,28 @@ import './App.css';
 import ForecastTable from './components/ForecastTable';
 
 const ENDPOINT = 'https://query.yahooapis.com/v1/public/yql';
+const LOCATIONS = [
+  {
+    name: 'Vancouver',
+    value: 'vancouver, bc',
+  },
+  {
+    name: 'Victoria',
+    value: 'victoria, bc',
+  },
+  {
+    name: 'Edmonton',
+    value: 'edmonton, ab',
+  },
+  {
+    name: 'Toronto',
+    value: 'toronto, on',
+  },
+  {
+    name: 'Montréal',
+    value: 'montreal, qc',
+  },
+];
 
 class App extends Component {
   constructor(props) {
@@ -73,11 +95,11 @@ class App extends Component {
 
         <h2>Location</h2>
         <select onChange={this.handleLocationChange}>
-          <option value="victoria, bc">Victoria</option>
-          <option value="vancouver, bc">Vancouver</option>
-          <option value="edmonton, ab">Edmonton</option>
-          <option value="toronto, on">Toronto</option>
-          <option value="montreal, qc">Montréal</option>
+          {
+            LOCATIONS.map((item, index) =>
+              <option key={item.value} value={item.value}>{item.name}</option>
+            )
+          }
         </select>
 
       </div>
