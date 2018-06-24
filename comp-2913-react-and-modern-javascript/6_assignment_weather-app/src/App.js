@@ -49,17 +49,21 @@ class App extends Component {
   getForecast = function() {
     const query = `select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='${this.state.location.value}') and u='c' limit 3`;
 
-    fetch(`${ENDPOINT}?format=json&q= ${query}`)
+    fetch(`${ENDPOINT}?format=json&q=${query}`)
     .then((response) => {
-      return response.json();
+      if (response.ok) {
+        return response.json()
+        .then((jsonResponse) => {
+          return jsonResponse.query.results.channel.map(channel => {
+            channel.item.forecast.key = Math.random().toString();
+            return channel.item.forecast;
+          });
+        });
+      }
+      return [];
     })
-    .then((jsonResponse) => {
-      this.setState({
-        forecast: jsonResponse.query.results.channel.map(channel => {
-          channel.item.forecast.key = Math.random().toString();
-          return channel.item.forecast;
-        }),
-      });
+    .then((forecast) => {
+      this.setState({forecast});
     });
   }
 
