@@ -7,12 +7,12 @@ import ForecastTable from './components/ForecastTable';
 const ENDPOINT = 'https://query.yahooapis.com/v1/public/yql';
 const LOCATIONS = [
   {
-    name: 'Vancouver',
-    value: 'vancouver, bc',
-  },
-  {
     name: 'Victoria',
     value: 'victoria, bc',
+  },
+  {
+    name: 'Vancouver',
+    value: 'vancouver, bc',
   },
   {
     name: 'Edmonton',
@@ -34,10 +34,7 @@ class App extends Component {
 
     this.state = {
       forecast: [],
-      location: {
-        name: 'Vancouver',
-        value: 'vancouver, bc',
-      },
+      location: LOCATIONS[0],
       numDays: 3,
       units: 'c',
     };
