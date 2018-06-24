@@ -3,7 +3,7 @@ import './index.css';
 
 class ForecastTable extends Component {
   render() {
-    const {data} = this.props;
+    const {data, units} = this.props;
 
     if(data.length) {
       return(
@@ -27,8 +27,8 @@ class ForecastTable extends Component {
                   </td>
                   <td>{item.date}</td>
                   <td>{item.day}</td>
-                  <td>{item.high}</td>
-                  <td>{item.low}</td>
+                  <td>{`${item.high}°${units.toUpperCase()}`}</td>
+                  <td>{`${item.low}°${units.toUpperCase()}`}</td>
                   <td>{item.text}</td>
                 </tr>
               )
@@ -46,6 +46,7 @@ class ForecastTable extends Component {
 
 ForecastTable.defaultProps = {
   data: [],
+  units: 'c',
 };
 
 export default ForecastTable;

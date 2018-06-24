@@ -33,11 +33,13 @@ class App extends Component {
     super(props);
 
     this.state = {
+      forecast: [],
       location: {
         name: 'Vancouver',
-        value: 'vancouver, bc'
+        value: 'vancouver, bc',
       },
-      forecast: [],
+      numDays: 3,
+      units: 'c',
     };
 
     // Bind custom methods
@@ -47,7 +49,8 @@ class App extends Component {
 
   // Custom methods
   getForecast = function() {
-    const query = `select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='${this.state.location.value}') and u='c' limit 3`;
+    const {location, numDays, units} = this.state;
+    const query = `select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='${location.value}') and u='${units}' limit ${numDays}`;
 
     fetch(`${ENDPOINT}?format=json&q=${query}`)
     .then((response) => {
@@ -87,15 +90,18 @@ class App extends Component {
   }
 
   render() {
-    const {forecast, location} = this.state;
+    const {forecast, location, numDays, units} = this.state;
 
     return (
       <div className="App">
 
         <h1>Weather App</h1>
 
-        <h2>3-day Forecast for {location.name}</h2>
-        <ForecastTable data={forecast} />
+        <h2>{numDays}-day Forecast for {location.name}</h2>
+        <ForecastTable
+          data={forecast}
+          units={units}
+        />
 
         <h2>Location</h2>
         <select onChange={this.handleLocationChange}>
