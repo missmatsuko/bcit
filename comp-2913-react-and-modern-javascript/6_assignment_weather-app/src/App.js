@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 // Components
@@ -22,9 +22,9 @@ class App extends Component {
 
   // Custom methods
   getForecast = function() {
-    const query = `select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='${ this.state.location }') and u='c' limit 3`;
+    const query = `select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='${this.state.location}') and u='c' limit 3`;
 
-    fetch(`${ ENDPOINT }?format=json&q= ${ query }`)
+    fetch(`${ENDPOINT}?format=json&q= ${query}`)
     .then((response) => {
       return response.json();
     })
@@ -50,6 +50,10 @@ class App extends Component {
   }
 
   // Lifecycle methods
+  componentDidMount() {
+    this.getForecast();
+  }
+
   render() {
     const {forecast, location} = this.state;
 

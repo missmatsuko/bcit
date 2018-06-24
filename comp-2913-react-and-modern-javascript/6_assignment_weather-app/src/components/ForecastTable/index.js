@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './index.css';
 
 class ForecastTable extends Component {
   render() {
-    const { data, daytime } = this.props;
+    const {data, daytime} = this.props;
 
     if(data.length) {
       return(
@@ -23,7 +23,7 @@ class ForecastTable extends Component {
               data.map((item, index) =>
                 <tr key={item.key}>
                   <td>
-                    <img src={`https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${item.code}${daytime ? 'd' : 'n' }.png`} alt='' />
+                    <img src={`https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${item.code}${daytime ? 'd' : 'n'}.png`} alt='' />
                   </td>
                   <td>{item.date}</td>
                   <td>{item.day}</td>
