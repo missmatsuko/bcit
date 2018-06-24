@@ -4,6 +4,7 @@
   border-radius: 5px;
   overflow: hidden;
   table-layout: fixed;
+  background-color: white;
 }
 
 .ForecastTable tr {

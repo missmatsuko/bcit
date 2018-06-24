@@ -1,5 +1,6 @@
 .SelectInput {
   display: block;
+  min-width: 12rem;
 }
 
 .SelectInputLabelText {
@@ -12,6 +13,7 @@
   display: block;
   padding: 0.5rem 1rem;
   color: #1d1da3;
+  background-color: white;
   border: 2px solid currentColor;
   border-radius: 5px;
   overflow: hidden;

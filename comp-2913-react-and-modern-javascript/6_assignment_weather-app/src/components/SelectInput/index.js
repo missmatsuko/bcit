@@ -30,14 +30,18 @@ class SelectInput extends Component {
   // Lifecycle methods
   render() {
     const {currentValue} = this.state;
-    const {label, values} = this.props;
+    const {label, name, values} = this.props;
 
     return (
       <label className="SelectInput">
         <span className="SelectInputLabelText">{label}</span>
         <span className="SelectInputField">
           <span className="SelectInputText">{currentValue.name}</span>
-          <select onChange={this.handleChange} className="SelectInputSelect">
+          <select
+            className="SelectInputSelect"
+            name={name}
+            onChange={this.handleChange}
+          >
             {
               values.map((item, index) =>
                 <option key={item.value} value={item.value}>{item.name}</option>
@@ -52,6 +56,7 @@ class SelectInput extends Component {
 
 SelectInput.defaultProps = {
   label: 'Select',
+  name: 'select',
   values: {
     name: 'Select',
     value: '',

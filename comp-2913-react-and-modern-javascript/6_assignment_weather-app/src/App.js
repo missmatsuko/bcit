@@ -6,6 +6,7 @@ import ForecastTable from './components/ForecastTable';
 import SelectInput from './components/SelectInput';
 
 const ENDPOINT = 'https://query.yahooapis.com/v1/public/yql';
+
 const LOCATIONS = [
   {
     name: 'Victoria',
@@ -29,6 +30,56 @@ const LOCATIONS = [
   },
 ];
 
+const UNITS = [
+  {
+    name: 'Celsius (°C)',
+    value: 'c',
+  },
+  {
+    name: 'Fahrenheit (°F)',
+    value: 'f',
+  },
+];
+
+const NUM_DAYS = [
+  {
+    name: '2',
+    value: 2,
+  },
+  {
+    name: '3',
+    value: 3,
+  },
+  {
+    name: '4',
+    value: 4,
+  },
+  {
+    name: '5',
+    value: 5,
+  },
+  {
+    name: '6',
+    value: 6,
+  },
+  {
+    name: '7',
+    value: 7,
+  },
+  {
+    name: '8',
+    value: 8,
+  },
+  {
+    name: '9',
+    value: 9,
+  },
+  {
+    name: '10',
+    value: 10,
+  },
+];
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,19 +87,19 @@ class App extends Component {
     this.state = {
       forecast: [],
       location: LOCATIONS[0],
-      numDays: 3,
-      units: 'c',
+      numDays: NUM_DAYS[0],
+      units: UNITS[0],
     };
 
     // Bind custom methods
     this.getForecast = this.getForecast.bind(this);
-    this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   // Custom methods
   getForecast = function() {
     const {location, numDays, units} = this.state;
-    const query = `select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='${location.value}') and u='${units}' limit ${numDays}`;
+    const query = `select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='${location.value}') and u='${units.value}' limit ${numDays.value}`;
 
     fetch(`${ENDPOINT}?format=json&q=${query}`)
     .then((response) => {
@@ -68,13 +119,13 @@ class App extends Component {
     });
   }
 
-  handleLocationChange = function(event) {
-    const newLocation = event.target;
+  handleInputChange = function(event) {
+    const input = event.target;
 
     this.setState({
-      location: {
-        name: newLocation[newLocation.selectedIndex].text,
-        value: newLocation.value,
+      [input.name]: {
+        name: input[input.selectedIndex].text,
+        value: input.value,
       },
     });
   }
@@ -85,7 +136,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.location !== this.state.location) {
+    if (prevState.location !== this.state.location || prevState.numDays !== this.state.numDays || prevState.units !== this.state.units) {
       this.getForecast();
     }
   }
@@ -98,18 +149,33 @@ class App extends Component {
 
         <h1 className="AppTitle">Weather App</h1>
 
-        <h2>{numDays}-day Forecast for {location.name}</h2>
+        <h2>{numDays.value}-day Forecast for {location.name}</h2>
         <ForecastTable
           data={forecast}
-          units={units}
+          units={units.value}
         />
 
-        <h2>Customize Forecast</h2>
-        <SelectInput
-          label="Location"
-          onChange={this.handleLocationChange}
-          values={LOCATIONS}
-        />
+        <h3>Customize Forecast</h3>
+        <div className="AppOptions">
+          <SelectInput
+            label="Location"
+            name="location"
+            onChange={this.handleInputChange}
+            values={LOCATIONS}
+          />
+          <SelectInput
+            label="Temperature Units"
+            name="units"
+            onChange={this.handleInputChange}
+            values={UNITS}
+          />
+          <SelectInput
+            label="Number of Days"
+            name="numDays"
+            onChange={this.handleInputChange}
+            values={NUM_DAYS}
+          />
+        </div>
 
       </div>
     );
