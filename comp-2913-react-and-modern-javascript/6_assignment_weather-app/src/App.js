@@ -95,7 +95,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <h1>Weather App</h1>
+        <h1 className="AppTitle">Weather App</h1>
 
         <h2>{numDays}-day Forecast for {location.name}</h2>
         <ForecastTable
@@ -104,13 +104,10 @@ class App extends Component {
         />
 
         <h2>Location</h2>
-        <select onChange={this.handleLocationChange}>
-          {
-            LOCATIONS.map((item, index) =>
-              <option key={item.value} value={item.value}>{item.name}</option>
-            )
-          }
-        </select>
+        <SelectInput
+          onChange={this.handleLocationChange}
+          values={LOCATIONS}
+        />
 
       </div>
     );

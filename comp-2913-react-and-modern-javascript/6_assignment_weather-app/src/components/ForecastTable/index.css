@@ -1,3 +1,32 @@
 .ForecastTable {
-  
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.ForecastTable tr {
+
+}
+
+.ForecastTable tr:hover,
+.ForecastTable tr:hover td {
+  background-color: #e7e3f4;
+}
+
+.ForecastTable th,
+.ForecastTable td {
+  text-align: left;
+}
+
+.ForecastTable th {
+  padding: 1rem;
+  background-color: #1d1da3;
+  color: white;
+}
+
+.ForecastTable td {
+  padding: 0.5rem 1rem;
+}
+
+.ForecastTable td:nth-child(even) {
+  background-color: #fafafa;
 }

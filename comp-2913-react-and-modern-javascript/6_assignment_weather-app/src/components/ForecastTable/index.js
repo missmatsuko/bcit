@@ -10,26 +10,23 @@ class ForecastTable extends Component {
         <table className="ForecastTable">
           <thead>
             <tr>
-              <th>Image</th>
               <th>Date</th>
-              <th>Day</th>
+              <th>Weather</th>
               <th>High</th>
               <th>Low</th>
-              <th>Text</th>
             </tr>
           </thead>
           <tbody>
             {
               data.map((item, index) =>
                 <tr key={item.key}>
+                  <td>{item.day} {item.date}</td>
                   <td>
                     <img src={`http://l.yimg.com/a/i/us/we/52/${item.code}.gif`} alt='' />
+                    <span>{item.text}</span>
                   </td>
-                  <td>{item.date}</td>
-                  <td>{item.day}</td>
                   <td>{`${item.high}°${units.toUpperCase()}`}</td>
                   <td>{`${item.low}°${units.toUpperCase()}`}</td>
-                  <td>{item.text}</td>
                 </tr>
               )
             }
