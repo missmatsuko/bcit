@@ -5,6 +5,7 @@ import './App.css';
 import ForecastTable from './components/ForecastTable';
 import SelectInput from './components/SelectInput';
 
+// Data
 const ENDPOINT = 'https://query.yahooapis.com/v1/public/yql';
 
 const LOCATIONS = [

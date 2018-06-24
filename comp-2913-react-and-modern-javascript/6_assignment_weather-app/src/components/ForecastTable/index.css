@@ -7,10 +7,6 @@
   background-color: white;
 }
 
-.ForecastTable tr {
-
-}
-
 .ForecastTable tr:hover,
 .ForecastTable tr:hover td {
   background-color: #e7e3f4;
